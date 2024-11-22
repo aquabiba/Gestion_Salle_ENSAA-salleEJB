@@ -1,11 +1,16 @@
 package model;
 
 import jakarta.persistence.*;
+
+import java.util.Date;
+
 @Entity
 public class LiberationExceptionnelle extends Liberation{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_lib_exe;
+    private Date dateDebut;
+    private Date dateFin;
 
     @OneToOne
     private Reservation reservation;
@@ -14,8 +19,9 @@ public class LiberationExceptionnelle extends Liberation{
     private Professeur professeur;
     public LiberationExceptionnelle(){}
 
-    public LiberationExceptionnelle(int id_lib_exe, Reservation reservation, Professeur professeur ) {
-        this.id_lib_exe = id_lib_exe;
+    public LiberationExceptionnelle(Date dateDebut, Date dateFin, Reservation reservation, Professeur professeur) {
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
         this.reservation = reservation;
         this.professeur = professeur;
     }
@@ -26,6 +32,22 @@ public class LiberationExceptionnelle extends Liberation{
 
     public void setProfesseur(Professeur professeur) {
         this.professeur = professeur;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 
     public int getId_lib_exe() {

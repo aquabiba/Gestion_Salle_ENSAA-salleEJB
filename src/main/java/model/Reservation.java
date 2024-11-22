@@ -1,9 +1,5 @@
 package model;
-
 import jakarta.persistence.*;
-
-import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,9 +7,8 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_res;
-    private Time crenaux_res;
-    private Date date_res;
-
+    @Embedded
+    private InfosRes infos_res;
     @OneToOne
     private Salle salle;
 
@@ -32,16 +27,22 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Time crenaux_res, Date date_res, Salle salle,
-                       Filiere filiere, Professeur professeur, List<LiberationExceptionnelle> liberationT,
-                       LiberationDefinitive liberationD) {
-        this.crenaux_res = crenaux_res;
-        this.date_res = date_res;
+    public Reservation(InfosRes infos_res, Salle salle, Filiere filiere, Professeur professeur,
+                       List<LiberationExceptionnelle> liberationT, LiberationDefinitive liberationD) {
+        this.infos_res = infos_res;
         this.salle = salle;
         this.filiere = filiere;
         this.professeur = professeur;
         this.liberationT = liberationT;
         this.liberationD = liberationD;
+    }
+
+    public InfosRes getInfos_res() {
+        return infos_res;
+    }
+
+    public void setInfos_res(InfosRes infos_res) {
+        this.infos_res = infos_res;
     }
 
     public int getId_res() {
@@ -52,21 +53,6 @@ public class Reservation {
         this.id_res = id_res;
     }
 
-    public Time getCrenaux_res() {
-        return crenaux_res;
-    }
-
-    public void setCrenaux_res(Time crenaux_res) {
-        this.crenaux_res = crenaux_res;
-    }
-
-    public Date getDate_res() {
-        return date_res;
-    }
-
-    public void setDate_res(Date date_res) {
-        this.date_res = date_res;
-    }
 
     public Salle getSalle() {
         return salle;
@@ -107,4 +93,5 @@ public class Reservation {
     public void setLiberationD(LiberationDefinitive liberationD) {
         this.liberationD = liberationD;
     }
+
 }
