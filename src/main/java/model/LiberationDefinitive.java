@@ -15,9 +15,8 @@ public class LiberationDefinitive {
 
     public LiberationDefinitive() {}
 
-    public LiberationDefinitive(Reservation reservation, int id_lib_def,Professeur professeur) {
+    public LiberationDefinitive(Reservation reservation, Professeur professeur) {
         this.reservation = reservation;
-        this.id_lib_def = id_lib_def;
         this.professeur = professeur;
     }
 

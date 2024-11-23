@@ -7,9 +7,10 @@ import java.util.List;
 
 @Local
 public interface EmploiService {
-    public Emploi getEmploiById(int id);
-    public List<Emploi> getAllEmplois();
-    public void ajouterEmploi(Emploi emploi);
-    public void supprimerEmploi(int id);
-    public void modifierEmploi(Emploi emploi);
+    Emploi getEmploiById(int id);
+    List<Emploi> getAllEmplois();
+    void ajouterEmploi(Emploi emploi);
+    void supprimerEmploi(int id);
+    void modifierEmploi(Emploi emploi);
+    byte[] generateEmploiPdf(int id); // Returns the PDF as a byte array for download.
 }

@@ -11,5 +11,5 @@ public interface LibDefService {
     public LiberationDefinitive getLiberationDefinitiveById(int id);
     public List<LiberationDefinitive> getAllLiberationDefinitives();
     public Reservation ajouterLiberationDefinitive(LiberationDefinitive liberationDefinitive);
-    public void LiberationAuto(Reservation reservation);
+    public void LiberationAuto();
 }
