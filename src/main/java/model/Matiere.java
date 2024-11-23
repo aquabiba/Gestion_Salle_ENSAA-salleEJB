@@ -12,17 +12,17 @@ public class Matiere {
     private String libelle_mat;
     private int nombreHeur_mat;
 
-    @OneToMany(mappedBy = "Matiere", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "matiere", cascade = CascadeType.ALL)
     private List<Professeur> professeurs ;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Coordinateur coordinateur;
+    private Coordinateur coord;
 
     public Matiere(String libelle_mat, int nombreHeur_mat, List<Professeur> professeurs, Coordinateur coordinateur) {
         this.libelle_mat = libelle_mat;
         this.nombreHeur_mat = nombreHeur_mat;
         this.professeurs = professeurs;
-        this.coordinateur = coordinateur;
+        this.coord = coordinateur;
     }
     public Matiere() {}
 
@@ -33,7 +33,7 @@ public class Matiere {
                 ", libelle_mat='" + libelle_mat + '\'' +
                 ", nombreHeur_mat=" + nombreHeur_mat +
                 ", professeurs=" + professeurs +
-                ", coordinateur=" + coordinateur +
+                ", coordinateur=" + coord +
                 '}';
     }
 
@@ -70,11 +70,11 @@ public class Matiere {
     }
 
     public Coordinateur getCoordinateur() {
-        return coordinateur;
+        return coord;
     }
 
     public void setCoordinateur(Coordinateur coordinateur) {
-        this.coordinateur = coordinateur;
+        this.coord = coordinateur;
     }
 
 

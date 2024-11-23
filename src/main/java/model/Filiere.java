@@ -13,15 +13,15 @@ public class Filiere {
     private int effectif_fil;
 
     @ManyToOne
-    private Coordinateur coordinateur;
-    @OneToMany(mappedBy = "Filiere",cascade = CascadeType.ALL)
-    private List<Reservation> reservation;
+    private Coordinateur coord;
+    @OneToMany(mappedBy = "filiere",cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
 
     public Filiere(String libelle_fil, int effectif_fil, Coordinateur coordinateur, List<Reservation> reservation) {
         this.libelle_fil = libelle_fil;
         this.effectif_fil = effectif_fil;
-        this.coordinateur = coordinateur;
-        this.reservation = reservation;
+        this.coord = coordinateur;
+        this.reservations = reservation;
     }
 
     public Filiere() {
@@ -52,18 +52,18 @@ public class Filiere {
     }
 
     public Coordinateur getCoordinateur() {
-        return coordinateur;
+        return coord;
     }
 
     public void setCoordinateur(Coordinateur coordinateur) {
-        this.coordinateur = coordinateur;
+        this.coord = coordinateur;
     }
 
     public List<Reservation> getReservation() {
-        return reservation;
+        return reservations;
     }
 
     public void setReservation(List<Reservation> reservation) {
-        this.reservation = reservation;
+        this.reservations = reservation;
     }
 }

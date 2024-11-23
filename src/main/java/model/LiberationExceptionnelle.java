@@ -12,7 +12,7 @@ public class LiberationExceptionnelle extends Liberation{
     private Date dateDebut;
     private Date dateFin;
 
-    @OneToOne
+    @ManyToOne
     private Reservation reservation;
 
     @OneToOne

@@ -9,7 +9,7 @@ public class ResponsableSalle extends Utilisateur{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_resp;
 
-    @OneToMany(mappedBy = "ResponsableSalle")
+    @OneToMany(mappedBy = "responsableSalle")
     private List<Salle> salles;
 
     public ResponsableSalle(String nom_Ut, String prenom_Ut, String email_Ut,

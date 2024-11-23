@@ -11,7 +11,8 @@ public class Professeur extends Utilisateur {
     private Matiere matiere;
 
 
-    public Professeur(String N,String P,String email,String pwd,String Tel,int id_prof) {
+
+    public Professeur(String N, String P, String email, String pwd, String Tel, int id_prof) {
         super(N,P,email,pwd,Tel);
         this.id_prof = id_prof;
     }
@@ -19,7 +20,13 @@ public class Professeur extends Utilisateur {
     public Professeur() {
         super();
     }
+    public Matiere getMatiere() {
+        return matiere;
+    }
 
+    public void setMatiere(Matiere matiere) {
+        this.matiere = matiere;
+    }
     public int getId_prof() {
         return id_prof;
     }

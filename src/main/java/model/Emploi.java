@@ -8,7 +8,7 @@ public class Emploi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_empl;
 
-    @OneToOne
+    @ManyToOne
     private Coordinateur coord;
 
     public Emploi(Coordinateur coord) {

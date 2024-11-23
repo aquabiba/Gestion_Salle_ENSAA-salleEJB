@@ -9,16 +9,16 @@ public class Reservation {
     private int id_res;
     @Embedded
     private InfosRes infos_res;
-    @OneToOne
+    @ManyToOne
     private Salle salle;
 
-    @OneToOne
+    @ManyToOne
     private Filiere filiere;
 
     @OneToOne
     private Professeur professeur;
 
-    @OneToMany(mappedBy = "Reservation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
     private List<LiberationExceptionnelle> liberationT;
 
     @OneToOne

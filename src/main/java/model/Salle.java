@@ -11,8 +11,12 @@ public class Salle {
     private String type_sal;
     private Boolean disponibilte_sal;
     private int capacite_sal;
-   @OneToMany(mappedBy = "Salle")
+   @OneToMany(mappedBy = "salle")
     private PriorityQueue<Reservation> reservations;
+   @ManyToOne
+   private ResponsableSalle responsableSalle;
+
+
 
     public Salle(String nom_sal, String localisation_sal,
                  String type_sal, Boolean disponibilte_sal, int capacite_sal) {
@@ -35,7 +39,13 @@ public class Salle {
     public Reservation retirerElement(){
         return reservations.poll();
     }
+    public ResponsableSalle getResponsableSalle() {
+        return responsableSalle;
+    }
 
+    public void setResponsableSalle(ResponsableSalle responsableSalle) {
+        this.responsableSalle = responsableSalle;
+    }
     public int getId_sal() {
         return id_sal;
     }

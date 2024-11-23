@@ -10,13 +10,13 @@ public class Coordinateur extends Utilisateur{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_coord;
 
-    @OneToMany(mappedBy = "Coordinateur")
+    @OneToMany(mappedBy = "coord", cascade = CascadeType.ALL)
     private List<Filiere> filiere;
 
-    @OneToMany(mappedBy = "Coordinateur")
+    @OneToMany(mappedBy = "coord", cascade = CascadeType.ALL)
     private List<Emploi> emploi;
 
-    @OneToMany(mappedBy = "Coordinateur")
+    @OneToMany(mappedBy = "coord", cascade = CascadeType.ALL)
     private List<Matiere> matiere;
     public Coordinateur(String nom_Ut, String prenom_Ut, String email_Ut,
                         String password_Ut, String telephone_Ut, int id_coord) {
