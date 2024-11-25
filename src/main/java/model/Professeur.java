@@ -10,12 +10,16 @@ public class Professeur extends Utilisateur {
     @ManyToOne
     private Matiere matiere;
 
-
-
-    public Professeur(String N, String P, String email, String pwd, String Tel, int id_prof) {
-        super(N,P,email,pwd,Tel);
-        this.id_prof = id_prof;
+    public Professeur(String nom_Ut, String prenom_Ut, String email_Ut, String password_Ut,
+                      String telephone_Ut, Matiere matiere) {
+        super(nom_Ut, prenom_Ut, email_Ut, password_Ut, telephone_Ut);
+        this.matiere = matiere;
     }
+
+//    public Professeur(String N, String P, String email, String pwd, String Tel) {
+//        super(N,P,email,pwd,Tel);
+//
+//    }
 
     public Professeur() {
         super();

@@ -25,6 +25,10 @@ public class Coordinateur extends Utilisateur{
 
     }
 
+    public Coordinateur(String nom_Ut, String prenom_Ut, String email_Ut, String password_Ut, String telephone_Ut) {
+        super(nom_Ut, prenom_Ut, email_Ut, password_Ut, telephone_Ut);
+    }
+
     public Coordinateur() {
         super();
     }
