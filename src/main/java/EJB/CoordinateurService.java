@@ -9,8 +9,12 @@ import java.util.List;
 public interface CoordinateurService {
       public Coordinateur getCoordinateurById(int id);
       public Coordinateur getCoordinateurByName(String name);
-      public List<Coordinateur> findAllCoordinateur();
+
+    Coordinateur getCoordinateurByEmail(String email);
+
+    public List<Coordinateur> findAllCoordinateur();
       public void ajouterCoordinateur(Coordinateur coordinateur);
       public void modifierCoordinateur(Coordinateur coordinateur);
       public void supprimerCoordinateur(int id);
+    public boolean emailExists(String email);
 }

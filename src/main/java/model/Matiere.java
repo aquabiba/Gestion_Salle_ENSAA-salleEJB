@@ -18,7 +18,14 @@ public class Matiere {
     @ManyToOne(cascade = CascadeType.ALL)
     private Coordinateur coord;
 
-    public Matiere(String libelle_mat, int nombreHeur_mat, List<Professeur> professeurs, Coordinateur coordinateur) {
+    public Matiere(String libelle_mat, int nombreHeur_mat, Coordinateur coord) {
+        this.libelle_mat = libelle_mat;
+        this.nombreHeur_mat = nombreHeur_mat;
+        this.coord = coord;
+    }
+
+    public Matiere(String libelle_mat, int nombreHeur_mat,
+                   List<Professeur> professeurs, Coordinateur coordinateur) {
         this.libelle_mat = libelle_mat;
         this.nombreHeur_mat = nombreHeur_mat;
         this.professeurs = professeurs;

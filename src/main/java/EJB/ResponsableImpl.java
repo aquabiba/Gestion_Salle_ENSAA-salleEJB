@@ -2,6 +2,7 @@ package EJB;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import model.ResponsableSalle;
 
@@ -47,5 +48,19 @@ public class ResponsableImpl implements ResponsableService {
     @Override
     public void modifierResponsable(ResponsableSalle responsable) {
         em.merge(responsable);
+    }
+
+    @Override
+    public boolean emailExists(String email) {
+        try {
+            // Utilisation de getSingleResult() avec une exception pour éviter des erreurs si aucun résultat n'est trouvé
+            String mail = (String) em.createQuery("SELECT p.email_Ut FROM ResponsableSalle p WHERE p.email_Ut = :email")
+                    .setParameter("email", email)
+                    .getSingleResult();
+            return mail != null && mail.equals(email);  // Vérifie si l'email existe
+        } catch (NoResultException e) {
+            // Si aucun résultat n'est trouvé, l'email n'existe pas
+            return false;
+        }
     }
 }

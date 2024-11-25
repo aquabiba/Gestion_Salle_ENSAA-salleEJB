@@ -13,5 +13,6 @@ public interface ProfesseurService {
     public void supprimerProfesseur(int id);
     public void modifierProfesseur(Professeur professeur);
     public Professeur getProfesseurByEmail(String email);
+    public boolean emailExists(String email);
 
 }

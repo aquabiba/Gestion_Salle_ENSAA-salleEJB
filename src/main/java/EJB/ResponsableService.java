@@ -14,4 +14,5 @@ public interface ResponsableService {
     public ResponsableSalle getResponsableByEmail(String email);
     public ResponsableSalle getResponsableByTel(String tel);
     public void modifierResponsable(ResponsableSalle responsable);
+    public boolean emailExists(String email);
 }

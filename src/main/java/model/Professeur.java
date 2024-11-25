@@ -15,11 +15,7 @@ public class Professeur extends Utilisateur {
         super(nom_Ut, prenom_Ut, email_Ut, password_Ut, telephone_Ut);
         this.matiere = matiere;
     }
-
-//    public Professeur(String N, String P, String email, String pwd, String Tel) {
-//        super(N,P,email,pwd,Tel);
-//
-//    }
+    
 
     public Professeur() {
         super();

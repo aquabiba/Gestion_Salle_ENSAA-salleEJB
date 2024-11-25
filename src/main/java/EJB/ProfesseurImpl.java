@@ -2,6 +2,7 @@ package EJB;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import model.Professeur;
 
@@ -24,7 +25,13 @@ public class ProfesseurImpl implements ProfesseurService {
 
     @Override
     public void ajouterProfesseur(Professeur professeur) {
-        em.persist(professeur);
+        try {
+            em.persist(professeur);
+            System.out.println("Professeur persisted successfully: " + professeur);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error persisting Professeur: " + e.getMessage());
+        }
     }
 
     @Override
@@ -42,4 +49,21 @@ public class ProfesseurImpl implements ProfesseurService {
         String query = "from Professeur where email_Ut = :email";
         return em.createQuery(query, Professeur.class).setParameter("email", email).getSingleResult();
     }
+
+    @Override
+    public boolean emailExists(String email) {
+        try {
+            // Utilisation de getSingleResult() avec une exception pour éviter des erreurs si aucun résultat n'est trouvé
+            String mail = (String) em.createQuery("SELECT p.email_Ut FROM Professeur p WHERE p.email_Ut = :email")
+                    .setParameter("email", email)
+                    .getSingleResult();
+            return mail != null && mail.equals(email);  // Vérifie si l'email existe
+        } catch (NoResultException e) {
+            // Si aucun résultat n'est trouvé, l'email n'existe pas
+            return false;
+        }
+    }
+
+
+
 }
