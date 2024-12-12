@@ -7,7 +7,9 @@ import model.LiberationDefinitive;
 import model.Reservation;
 import model.Salle;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -29,9 +31,9 @@ public class LibDefImpl implements LibDefService {
     public Reservation ajouterLiberationDefinitive(LiberationDefinitive liberationDefinitive) {
 
             em.persist(liberationDefinitive);
-        int id2 = liberationDefinitive.getReservation().getSalle().getId_sal();
-        String hql2 = "Update Salle s SET s.disponibilte_sal = :newStatus WHERE s.id_sal= :salleId";
-        em.createQuery(hql2, Salle.class).setParameter("newStatus", true).setParameter("salleId", id2);
+//        int id2 = liberationDefinitive.getReservation().getSalle().getId_sal();
+//        String hql2 = "Update Salle s SET s.disponibilte_sal = :newStatus WHERE s.id_sal= :salleId";
+//        em.createQuery(hql2, Salle.class).setParameter("newStatus", true).setParameter("salleId", id2);
         int id = liberationDefinitive.getReservation().getId_res();
         String hql = "UPDATE Reservation r SET r.infos_res.status_res = :newStatus WHERE r.id = :reservationId";
         return em.createQuery(hql,Reservation.class).setParameter("newStatus", false).setParameter("reservationId", id).getSingleResult();
@@ -47,13 +49,12 @@ public class LibDefImpl implements LibDefService {
 
         for(Reservation reservationExpire : reservationExpires){
             int id = reservationExpire.getId_res();
-            String hql2 = "Update Salle s SET s.disponibilte_sal = :newStatus WHERE s.id_sal= :salleId";
+
             String hql = "UPDATE Reservation r SET r.infos_res.status_res = :newStatus WHERE r.id = :reservationId";
-            int idSalle = reservationExpire.getSalle().getId_sal();
-            em.createQuery(hql2,Salle.class).setParameter("newStatus", true).setParameter("salleId", idSalle);
+
             em.createQuery(hql,Reservation.class).setParameter("newStatus", false).setParameter("reservationId", id);
 
-            LiberationDefinitive libDef = new LiberationDefinitive(reservationExpire,reservationExpire.getProfesseur());
+            LiberationDefinitive libDef = new LiberationDefinitive(LocalDate.now(),reservationExpire,reservationExpire.getProfesseur());
             em.persist(libDef);
         }
     }

@@ -9,13 +9,11 @@ public class Reservation {
     private int id_res;
     @Embedded
     private InfosRes infos_res;
-    @ManyToOne
-    private Salle salle;
 
     @ManyToOne
     private Filiere filiere;
 
-    @OneToOne
+    @ManyToOne
     private Professeur professeur;
 
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
@@ -24,17 +22,26 @@ public class Reservation {
     @OneToOne
     private LiberationDefinitive liberationD;
 
+    @ManyToOne
+    private Creneau creneau;
+
     public Reservation() {
     }
 
-    public Reservation(InfosRes infos_res, Salle salle, Filiere filiere, Professeur professeur,
-                       List<LiberationExceptionnelle> liberationT, LiberationDefinitive liberationD) {
-        this.infos_res = infos_res;
-        this.salle = salle;
+    public Reservation(Filiere filiere, InfosRes infos_res, Professeur professeur, LiberationDefinitive liberationD, Creneau creneau) {
         this.filiere = filiere;
+        this.infos_res = infos_res;
         this.professeur = professeur;
-        this.liberationT = liberationT;
         this.liberationD = liberationD;
+        this.creneau = creneau;
+    }
+
+    public Creneau getCreneau() {
+        return creneau;
+    }
+
+    public void setCreneau(Creneau creneau) {
+        this.creneau = creneau;
     }
 
     public InfosRes getInfos_res() {
@@ -53,14 +60,6 @@ public class Reservation {
         this.id_res = id_res;
     }
 
-
-    public Salle getSalle() {
-        return salle;
-    }
-
-    public void setSalle(Salle salle) {
-        this.salle = salle;
-    }
 
     public Professeur getProfesseur() {
         return professeur;

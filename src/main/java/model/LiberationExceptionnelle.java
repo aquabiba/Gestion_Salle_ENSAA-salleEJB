@@ -15,11 +15,15 @@ public class LiberationExceptionnelle extends Liberation{
     @ManyToOne
     private Reservation reservation;
 
-    @OneToOne
+    @ManyToOne
     private Professeur professeur;
-    public LiberationExceptionnelle(){}
 
-    public LiberationExceptionnelle(Date dateDebut, Date dateFin, Reservation reservation, Professeur professeur) {
+    public LiberationExceptionnelle(){
+        super();
+    }
+
+    public LiberationExceptionnelle(String Libelle, Date dateDebut, Date dateFin, Reservation reservation, Professeur professeur) {
+        super(Libelle);
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.reservation = reservation;

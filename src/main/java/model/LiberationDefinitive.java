@@ -1,23 +1,35 @@
 package model;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
+
 @Entity
-public class LiberationDefinitive {
+public class LiberationDefinitive extends Liberation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_lib_def;
+    private LocalDate date_lib_def;
 
     @OneToOne
     private Reservation reservation;
 
-    @OneToOne
+    @ManyToOne
     private Professeur professeur;
 
     public LiberationDefinitive() {}
 
-    public LiberationDefinitive(Reservation reservation, Professeur professeur) {
+    public LiberationDefinitive(LocalDate date_lib_def,Reservation reservation, Professeur professeur) {
         this.reservation = reservation;
         this.professeur = professeur;
+        this.date_lib_def = date_lib_def;
+    }
+
+    public LocalDate getDate_lib_def() {
+        return date_lib_def;
+    }
+
+    public void setDate_lib_def(LocalDate date_lib_def) {
+        this.date_lib_def = date_lib_def;
     }
 
     public Professeur getProfesseur() {

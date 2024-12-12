@@ -12,5 +12,6 @@ public interface SalleService {
     public void modifierSalle(Salle salle);
     public void supprimerSalle(int idSalle);
     public Salle getSalleById(int idSalle);
+    public Salle getSalleByName(String nom);
     public List<Salle> getAllSalles();
 }

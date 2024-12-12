@@ -7,6 +7,10 @@ public class Liberation {
     private String libelle_lib;
     public Liberation(){}
 
+    public Liberation(String libelle_lib) {
+        this.libelle_lib = libelle_lib;
+    }
+
     @Override
     public String toString() {
         return "Liberation{" +

@@ -34,6 +34,12 @@ public class SalleImpl implements SalleService {
     }
 
     @Override
+    public Salle getSalleByName(String nom) {
+        String hql = "select s from Salle s where s.nom_sal = :nom";
+        return em.createQuery(hql, Salle.class).setParameter("nom", nom).getSingleResult();
+    }
+
+    @Override
     public List<Salle> getAllSalles() {
         return em.createQuery("select s from Salle s", Salle.class).getResultList();
     }

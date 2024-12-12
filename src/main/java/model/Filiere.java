@@ -11,20 +11,46 @@ public class Filiere {
     private int id_fil;
     private String libelle_fil;
     private int effectif_fil;
+    private String niveau_fil;
 
     @ManyToOne
     private Coordinateur coord;
     @OneToMany(mappedBy = "filiere",cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
-    public Filiere(String libelle_fil, int effectif_fil, Coordinateur coordinateur, List<Reservation> reservation) {
+    public Filiere(String libelle_fil, String niveau_fil ,int effectif_fil, Coordinateur coordinateur, List<Reservation> reservation) {
         this.libelle_fil = libelle_fil;
+        this.niveau_fil = niveau_fil;
         this.effectif_fil = effectif_fil;
         this.coord = coordinateur;
         this.reservations = reservation;
     }
 
     public Filiere() {
+    }
+
+    public String getNiveau_fil() {
+        return niveau_fil;
+    }
+
+    public void setNiveau_fil(String niveau_fil) {
+        this.niveau_fil = niveau_fil;
+    }
+
+    public Coordinateur getCoord() {
+        return coord;
+    }
+
+    public void setCoord(Coordinateur coord) {
+        this.coord = coord;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     public int getId_fil() {

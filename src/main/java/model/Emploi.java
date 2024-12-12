@@ -7,15 +7,25 @@ public class Emploi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_empl;
+    private String desc_empl;
 
     @ManyToOne
     private Coordinateur coord;
 
+
+    public Emploi() {}
+
+    public String getDesc_empl() {
+        return desc_empl;
+    }
+
+    public void setDesc_empl(String desc_empl) {
+        this.desc_empl = desc_empl;
+    }
+
     public Emploi(Coordinateur coord) {
         this.coord = coord;
     }
-    public Emploi() {}
-
     public int getId_empl() {
         return id_empl;
     }

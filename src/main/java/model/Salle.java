@@ -1,6 +1,9 @@
 package model;
 import jakarta.persistence.*;
-import java.util.PriorityQueue;
+
+import java.util.List;
+import java.util.Set;
+
 @Entity
 public class Salle {
     @Id
@@ -9,36 +12,60 @@ public class Salle {
     private String nom_sal;
     private String localisation_sal;
     private String type_sal;
-    private Boolean disponibilte_sal;
     private int capacite_sal;
-   @OneToMany(mappedBy = "salle")
-    private PriorityQueue<Reservation> reservations;
    @ManyToOne
    private ResponsableSalle responsableSalle;
+    @OneToMany(mappedBy = "salle")
+    private List<Creneau> creneaux;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
     public Salle(String nom_sal, String localisation_sal,
-                 String type_sal, Boolean disponibilte_sal, int capacite_sal) {
+                 String type_sal,int capacite_sal, ResponsableSalle responsableSalle) {
 
         this.nom_sal = nom_sal;
         this.localisation_sal = localisation_sal;
         this.type_sal = type_sal;
-        this.disponibilte_sal = disponibilte_sal;
         this.capacite_sal = capacite_sal;
+        this.responsableSalle = responsableSalle;
+
     }
 
     public Salle() {
 
     }
-    //ajouter un element à la queue
-    public void ajouterElement(Reservation res){
-        reservations.add(res);
+
+
+    public List<Creneau> getCreneaux() {
+        return creneaux;
     }
-    //afficher le premier element.
-    public Reservation retirerElement(){
-        return reservations.poll();
+
+    public void setCreneaux(List<Creneau> creneaux) {
+        this.creneaux = creneaux;
     }
+
     public ResponsableSalle getResponsableSalle() {
         return responsableSalle;
     }
@@ -86,21 +113,6 @@ public class Salle {
         this.capacite_sal = capacite_sal;
     }
 
-    public PriorityQueue<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(PriorityQueue<Reservation> reservations) {
-        this.reservations = reservations;
-    }
-
-    public Boolean getDisponibilte_sal() {
-        return disponibilte_sal;
-    }
-
-    public void setDisponibilte_sal(Boolean disponibilte_sal) {
-        this.disponibilte_sal = disponibilte_sal;
-    }
 
     @Override
     public String toString() {
@@ -109,9 +121,10 @@ public class Salle {
                 ", nom_sal='" + nom_sal + '\'' +
                 ", localisation_sal='" + localisation_sal + '\'' +
                 ", type_sal='" + type_sal + '\'' +
-                ", disponibilte_sal=" + disponibilte_sal +
                 ", capacite_sal=" + capacite_sal +
-                ", reservations=" + reservations +
+                ", responsableSalle=" + responsableSalle +
+                ", creneaux=" + creneaux +
                 '}';
     }
 }
+

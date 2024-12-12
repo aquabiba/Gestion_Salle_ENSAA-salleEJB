@@ -17,9 +17,9 @@ public class ReservationImpl implements ReservationService {
     @Override
     public void ajouterReservation(Reservation res) {
         em.persist(res);
-        int id = res.getSalle().getId_sal();
-        String query = "UPDATE Salle s SET s.disponibilte_sal=false WHERE s.id_sal=:id  ";
-        em.createQuery(query).setParameter("id", id).executeUpdate();
+//        int id = res.getSalle().getId_sal();
+//        String query = "UPDATE Salle s SET s.disponibilte_sal=false WHERE s.id_sal=:id  ";
+//        em.createQuery(query).setParameter("id", id).executeUpdate();
     }
 
     //a ne pas manipuler cette fonction
