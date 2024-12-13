@@ -8,7 +8,8 @@ public class Emploi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_empl;
     private String desc_empl;
-
+    @Lob
+    private Byte[] emploiPDF;
     @ManyToOne
     private Coordinateur coord;
 
@@ -40,6 +41,14 @@ public class Emploi {
 
     public void setCoord(Coordinateur coord) {
         this.coord = coord;
+    }
+
+    public Byte[] getEmploiPDF() {
+        return emploiPDF;
+    }
+
+    public void setEmploiPDF(Byte[] emploiPDF) {
+        this.emploiPDF = emploiPDF;
     }
 
     @Override

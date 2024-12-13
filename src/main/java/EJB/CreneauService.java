@@ -1,10 +1,11 @@
 package EJB;
 
+import jakarta.ejb.Local;
 import model.Creneau;
 import model.Salle;
 
 import java.util.List;
-
+@Local
 public interface CreneauService {
 
     public void addCreneau(Creneau creneau);

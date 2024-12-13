@@ -18,9 +18,9 @@
     <class>model.InfosRes</class>
     <class>model.Emploi</class>
     <properties>
-      <!--property name="jakarta.persistence.schema-generation.database.action"
-                value="drop-and-create"/-->
-      <property name="spring.jpa.hibernate.ddl-auto" value="update"/>
+      <property name="jakarta.persistence.schema-generation.database.action"
+                value="drop-and-create"/>
+      <!--property name="spring.jpa.hibernate.ddl-auto" value="update"/-->
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 
     </properties>

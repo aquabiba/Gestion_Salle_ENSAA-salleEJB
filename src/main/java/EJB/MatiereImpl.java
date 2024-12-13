@@ -3,6 +3,7 @@ package EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import model.Coordinateur;
 import model.Matiere;
 
 import java.util.List;
@@ -31,6 +32,11 @@ public class MatiereImpl implements MatiereService {
 
     @Override
     public void ajouterMatiere(Matiere matiere) {
+        // Reattach the Coordinateur entity to the persistence context
+        Coordinateur managedCoord = em.merge(matiere.getCoordinateur());
+        matiere.setCoordinateur(managedCoord); // Set the managed entity
+
+        // Persist the Matiere
         em.persist(matiere);
     }
 

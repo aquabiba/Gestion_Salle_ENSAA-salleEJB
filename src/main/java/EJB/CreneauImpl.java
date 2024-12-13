@@ -1,12 +1,13 @@
 package EJB;
 
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import model.Creneau;
 import model.Salle;
 
 import java.util.List;
-
+@Stateless
 public class CreneauImpl implements CreneauService {
     @PersistenceContext(unitName = "salleEJB")
     private EntityManager em;

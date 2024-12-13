@@ -19,7 +19,7 @@ public class FiliereImpl implements FiliereService {
 
     @Override
     public Filiere getFiliereByName(String filiereName) {
-        String hql = "SELECT f FROM Filiere f WHERE f.libelle_fil = :filiereName";
+        String hql = "SELECT f FROM Filiere f WHERE f.libelle_fil =:filiereName";
         return em.createQuery(hql, Filiere.class).setParameter("filiereName", filiereName).getSingleResult();
     }
 

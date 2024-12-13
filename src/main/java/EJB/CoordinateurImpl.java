@@ -36,11 +36,13 @@ public class CoordinateurImpl implements CoordinateurService {
 
     @Override
     public void ajouterCoordinateur(Coordinateur coordinateur) {
+
         em.persist(coordinateur);
     }
 
     @Override
     public void modifierCoordinateur(Coordinateur coordinateur) {
+
         em.merge(coordinateur);
     }
 

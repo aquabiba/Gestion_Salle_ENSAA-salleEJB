@@ -9,6 +9,7 @@ public class Filiere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_fil;
+
     private String libelle_fil;
     private int effectif_fil;
     private String niveau_fil;
@@ -18,12 +19,11 @@ public class Filiere {
     @OneToMany(mappedBy = "filiere",cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
-    public Filiere(String libelle_fil, String niveau_fil ,int effectif_fil, Coordinateur coordinateur, List<Reservation> reservation) {
+    public Filiere(String libelle_fil, String niveau_fil ,int effectif_fil, Coordinateur coordinateur) {
         this.libelle_fil = libelle_fil;
         this.niveau_fil = niveau_fil;
         this.effectif_fil = effectif_fil;
         this.coord = coordinateur;
-        this.reservations = reservation;
     }
 
     public Filiere() {

@@ -46,7 +46,7 @@ public class ProfesseurImpl implements ProfesseurService {
 
     @Override
     public Professeur getProfesseurByEmail(String email) {
-        String query = "select p from Professeur p where email_Ut = :email";
+        String query = "select p from Professeur p where email_Ut =:email";
         return em.createQuery(query, Professeur.class).setParameter("email", email).getSingleResult();
     }
 

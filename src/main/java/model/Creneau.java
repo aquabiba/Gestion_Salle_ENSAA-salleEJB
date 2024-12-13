@@ -9,22 +9,18 @@ public class Creneau {
     private int id_creneau;
     private String desc_creneau;
     private boolean disponibilite_sal;
-    @OneToOne
-    private Reservation reservation;
+
     @ManyToOne
     private Salle salle;
 
 
-
-
-
-    public Creneau() {
-    }
-    public Creneau(String desc_creneau, boolean disponibilite_sal) {
+    public Creneau(String desc_creneau, boolean disponibilite_sal, Reservation reservation, Salle salle) {
         this.desc_creneau = desc_creneau;
         this.disponibilite_sal = disponibilite_sal;
-//        this.reservations = new ArrayList<Reservation>();
-//        this.salles = new ArrayList<Salle>();
+        this.salle = salle;
+    }
+
+    public Creneau() {
     }
 
     public int getId_creneau() {
@@ -51,13 +47,7 @@ public class Creneau {
         this.disponibilite_sal = disponibilite_sal;
     }
 
-    public Reservation getReservation() {
-        return reservation;
-    }
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
 
     public Salle getSalle() {
         return salle;
@@ -73,7 +63,6 @@ public class Creneau {
                 "id_creneau=" + id_creneau +
                 ", desc_creneau='" + desc_creneau + '\'' +
                 ", disponibilite_sal=" + disponibilite_sal +
-                ", reservations=" + reservation +
                 ", salles=" + salle +
                 '}';
     }

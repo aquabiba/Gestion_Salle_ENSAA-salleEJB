@@ -19,20 +19,16 @@ public class Reservation {
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
     private List<LiberationExceptionnelle> liberationT;
 
-    @OneToOne
-    private LiberationDefinitive liberationD;
-
     @ManyToOne
     private Creneau creneau;
 
     public Reservation() {
     }
 
-    public Reservation(Filiere filiere, InfosRes infos_res, Professeur professeur, LiberationDefinitive liberationD, Creneau creneau) {
+    public Reservation(Filiere filiere, InfosRes infos_res, Professeur professeur, Creneau creneau) {
         this.filiere = filiere;
         this.infos_res = infos_res;
         this.professeur = professeur;
-        this.liberationD = liberationD;
         this.creneau = creneau;
     }
 
@@ -85,12 +81,6 @@ public class Reservation {
         this.liberationT = liberationT;
     }
 
-    public LiberationDefinitive getLiberationD() {
-        return liberationD;
-    }
 
-    public void setLiberationD(LiberationDefinitive liberationD) {
-        this.liberationD = liberationD;
-    }
 
 }
