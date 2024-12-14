@@ -2,6 +2,7 @@ package model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -9,8 +10,8 @@ public class LiberationExceptionnelle extends Liberation{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_lib_exe;
-    private Date dateDebut;
-    private Date dateFin;
+    private LocalDate dateDebut;
+    private LocalDate dateFin;
 
     @ManyToOne
     private Reservation reservation;
@@ -22,7 +23,7 @@ public class LiberationExceptionnelle extends Liberation{
         super();
     }
 
-    public LiberationExceptionnelle(String Libelle, Date dateDebut, Date dateFin, Reservation reservation, Professeur professeur) {
+    public LiberationExceptionnelle(String Libelle, LocalDate dateDebut, LocalDate dateFin, Reservation reservation, Professeur professeur) {
         super(Libelle);
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -38,19 +39,19 @@ public class LiberationExceptionnelle extends Liberation{
         this.professeur = professeur;
     }
 
-    public Date getDateDebut() {
+    public LocalDate getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(LocalDate dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateFin() {
+    public LocalDate getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(LocalDate dateFin) {
         this.dateFin = dateFin;
     }
 

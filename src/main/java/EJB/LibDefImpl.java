@@ -46,7 +46,7 @@ public class LibDefImpl implements LibDefService {
 
         String sql = "SELECT r FROM Reservation r WHERE r.infos_res.dateFin < :date";
         List<Reservation> reservationExpires =em.createQuery(sql, Reservation.class).setParameter("date",currentdate).getResultList();
-
+        if (!reservationExpires.isEmpty()) {
         for(Reservation reservationExpire : reservationExpires){
             int id = reservationExpire.getId_res();
 
@@ -54,8 +54,9 @@ public class LibDefImpl implements LibDefService {
 
             em.createQuery(hql,Reservation.class).setParameter("newStatus", false).setParameter("reservationId", id);
 
-            LiberationDefinitive libDef = new LiberationDefinitive(LocalDate.now(),reservationExpire,reservationExpire.getProfesseur());
+            LiberationDefinitive libDef = new LiberationDefinitive("Réservation"+reservationExpire.getId_res()+"est libéré Automatiquement",LocalDate.now(),reservationExpire,reservationExpire.getProfesseur());
             em.persist(libDef);
+        }
         }
     }
 }

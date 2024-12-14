@@ -18,7 +18,8 @@ public class LiberationDefinitive extends Liberation {
 
     public LiberationDefinitive() {}
 
-    public LiberationDefinitive(LocalDate date_lib_def,Reservation reservation, Professeur professeur) {
+    public LiberationDefinitive(String libele,LocalDate date_lib_def,Reservation reservation, Professeur professeur) {
+        super(libele);
         this.reservation = reservation;
         this.professeur = professeur;
         this.date_lib_def = date_lib_def;
