@@ -49,4 +49,18 @@ public class ReservationImpl implements ReservationService {
         String query = "select r from Reservation r where r.professeur = :prof";
         return em.createQuery(query, Reservation.class).setParameter("prof", prof).getResultList();
     }
+// c est ici la fonction qui va nous permetttre de recuperer les donnees de l'emploi du temps genere automatiquement
+    @Override
+    public List<Object[]> getReservationsWithSalleByFiliere(String filiereName) {
+        String jpql = "SELECT r.creneau, p.matiere, p, c.salle, r.infos_res " +
+                "FROM Reservation r " +
+                "JOIN r.creneau c " +
+                "JOIN c.salle s " +
+                "JOIN r.professeur p " +
+                "WHERE r.filiere.id = :filiereName";
+
+        return em.createQuery(jpql, Object[].class)
+                .setParameter("filiereName", filiereName)
+                .getResultList();
+    }
 }
