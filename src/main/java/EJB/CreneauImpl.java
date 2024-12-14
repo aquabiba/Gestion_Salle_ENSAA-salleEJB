@@ -30,14 +30,13 @@ public class CreneauImpl implements CreneauService {
 
     @Override
     public Creneau getCreneauById(int id) {
-        String hql = "select c from Creneau c where c.id = ?";
-
-        return null;
+        String hql = "select c from Creneau c where c.id = :id";
+        return em.createQuery(hql, Creneau.class).setParameter("id", id).getSingleResult();
     }
 
     @Override
     public List<Creneau> getCreneaux() {
-        return List.of();
+        return em.createQuery("select c from Creneau c", Creneau.class).getResultList();
     }
 
     @Override

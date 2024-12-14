@@ -14,7 +14,7 @@ public class Creneau {
     private Salle salle;
 
 
-    public Creneau(String desc_creneau, boolean disponibilite_sal, Reservation reservation, Salle salle) {
+    public Creneau(String desc_creneau, boolean disponibilite_sal, Salle salle) {
         this.desc_creneau = desc_creneau;
         this.disponibilite_sal = disponibilite_sal;
         this.salle = salle;

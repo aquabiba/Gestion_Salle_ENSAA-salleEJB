@@ -17,8 +17,8 @@ public class LibExefImpl implements LibExeService {
         em.persist(liberationExceptionnelle);
         int id_res=liberationExceptionnelle.getReservation().getId_res();
         String hql = "UPDATE Reservation r SET r.infos_res.status_res = :newStatus WHERE r.id = :reservationId";
-        return em.createQuery(hql,Reservation.class).setParameter("newStatus", false).setParameter("reservationId", id_res).getSingleResult();
-
+        em.createQuery(hql).setParameter("newStatus", false).setParameter("reservationId", id_res).executeUpdate();
+        return liberationExceptionnelle.getReservation() ;
     }
 
     @Override
