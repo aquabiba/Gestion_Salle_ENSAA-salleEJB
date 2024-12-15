@@ -1,5 +1,6 @@
 package EJB;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -24,29 +25,34 @@ public class CoordinateurImpl implements CoordinateurService {
         return em.createQuery(hql, Coordinateur.class).setParameter("name", name).getSingleResult();
     }
     @Override
+
     public Coordinateur getCoordinateurByEmail(String email){
         String hql = "select c from Coordinateur c where c.email_Ut=:email";
         return em.createQuery(hql, Coordinateur.class).setParameter("email", email).getSingleResult();
     }
 
     @Override
+
     public List<Coordinateur> findAllCoordinateur() {
         return em.createQuery("Select c from Coordinateur c", Coordinateur.class).getResultList();
     }
 
     @Override
+
     public void ajouterCoordinateur(Coordinateur coordinateur) {
 
         em.persist(coordinateur);
     }
 
     @Override
+
     public void modifierCoordinateur(Coordinateur coordinateur) {
 
         em.merge(coordinateur);
     }
 
     @Override
+
     public void supprimerCoordinateur(int id) {
         em.remove(em.find(Coordinateur.class, id));
     }

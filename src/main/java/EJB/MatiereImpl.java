@@ -1,11 +1,13 @@
 package EJB;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import model.Coordinateur;
 import model.Matiere;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -27,7 +29,10 @@ public class MatiereImpl implements MatiereService {
 
     @Override
     public List<Matiere> getAllMatieres() {
-        return em.createQuery("SELECT m FROM Matiere m", Matiere.class).getResultList();
+        List<Matiere> matieres =  em.createQuery("SELECT m FROM Matiere m", Matiere.class).getResultList();
+        if (matieres != null) {
+            return matieres;
+        }else return null;
     }
 
     @Override

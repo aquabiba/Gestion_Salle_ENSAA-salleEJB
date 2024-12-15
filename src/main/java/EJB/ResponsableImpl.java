@@ -1,5 +1,6 @@
 package EJB;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Stateless
 public class ResponsableImpl implements ResponsableService {
+
     @PersistenceContext(unitName = "salleEJB")
     private EntityManager em;
 

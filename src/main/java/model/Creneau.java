@@ -57,13 +57,5 @@ public class Creneau {
         this.salle = salle;
     }
 
-    @Override
-    public String toString() {
-        return "Creneau{" +
-                "id_creneau=" + id_creneau +
-                ", desc_creneau='" + desc_creneau + '\'' +
-                ", disponibilite_sal=" + disponibilite_sal +
-                ", salles=" + salle +
-                '}';
-    }
+
 }

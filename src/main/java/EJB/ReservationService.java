@@ -15,5 +15,6 @@ public interface ReservationService {
     public List<Reservation> getReservationByDate(String date);
     public List<Reservation> getReservationByProf(Professeur prof);
     public List<Object[]> getReservationsWithSalleByFiliere(String filiereName);
-
+    public Reservation getReservationByCreaneauJour(String Creneau, String Jour);
+    public Reservation getReservationByCreneauJourFiliere(String creneau, String jour, String filiere);
 }

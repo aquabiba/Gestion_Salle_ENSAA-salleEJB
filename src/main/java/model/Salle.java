@@ -15,28 +15,8 @@ public class Salle {
     private int capacite_sal;
    @ManyToOne
    private ResponsableSalle responsableSalle;
-    @OneToMany(mappedBy = "salle")
+    @OneToMany(mappedBy = "salle",fetch = FetchType.EAGER)
     private List<Creneau> creneaux;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -114,17 +94,5 @@ public class Salle {
     }
 
 
-    @Override
-    public String toString() {
-        return "Salle{" +
-                "id_sal=" + id_sal +
-                ", nom_sal='" + nom_sal + '\'' +
-                ", localisation_sal='" + localisation_sal + '\'' +
-                ", type_sal='" + type_sal + '\'' +
-                ", capacite_sal=" + capacite_sal +
-                ", responsableSalle=" + responsableSalle +
-                ", creneaux=" + creneaux +
-                '}';
-    }
 }
 

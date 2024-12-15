@@ -8,6 +8,7 @@ import java.util.List;
 @Local
 public interface EmploiService {
     Emploi getEmploiById(int id);
+    Emploi getEmploiByName(String name);
     List<Emploi> getAllEmplois();
     void ajouterEmploi(Emploi emploi);
     void supprimerEmploi(int id);

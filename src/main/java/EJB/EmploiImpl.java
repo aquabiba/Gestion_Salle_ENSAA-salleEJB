@@ -24,6 +24,20 @@ public class EmploiImpl implements EmploiService {
     }
 
     @Override
+    public Emploi getEmploiByName(String name) {
+        String sql = "SELECT e FROM Emploi e WHERE e.desc_empl = :name";
+        List<Emploi> resultList = em.createQuery(sql, Emploi.class)
+                .setParameter("name", name)
+                .getResultList();
+
+        if (resultList.isEmpty()) {
+            return null; // Retourne null si aucun résultat
+        }
+        return resultList.getFirst(); // Retourne le premier résultat
+    }
+
+
+    @Override
     public List<Emploi> getAllEmplois() {
         TypedQuery<Emploi> query = em.createQuery("SELECT e FROM Emploi e", Emploi.class);
         return query.getResultList();
@@ -48,43 +62,6 @@ public class EmploiImpl implements EmploiService {
     }
 
 
-//    public byte[] generateEmploiPdf(int id) {
-//        Emploi emploi = em.find(Emploi.class, id);
-//        if (emploi == null) {
-//            throw new IllegalArgumentException("Emploi not found with ID: " + id);
-//        }
-//
-//        // Generate PDF using PDFBox
-//        try (PDDocument document = new PDDocument();
-//             ByteArrayOutputStream out = new ByteArrayOutputStream()) {
-//
-//            // Add a page
-//            PDPage page = new PDPage();
-//            document.addPage(page);
-//
-//            // Write content
-//            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
-//                contentStream.setFont(PDType1Font.HELVETICA, 12);
-//                contentStream.beginText();
-//                contentStream.setLeading(14.5f);
-//                contentStream.newLineAtOffset(50, 700);
-//
-//                contentStream.showText("Emploi Details:");
-//                contentStream.newLine();
-//                contentStream.showText("ID: " + emploi.getId_empl());
-//                contentStream.newLine();
-//                contentStream.showText("coordinateur: " + emploi.getCoord());
-//                contentStream.newLine();
-//                contentStream.endText();
-//
-//            }
-//
-//            // Save to ByteArrayOutputStream
-//            document.save(out);
-//            return out.toByteArray();
-//        } catch (IOException e) {
-//            throw new RuntimeException("Error generating PDF", e);
-//        }
-//    }
+
 }
 
