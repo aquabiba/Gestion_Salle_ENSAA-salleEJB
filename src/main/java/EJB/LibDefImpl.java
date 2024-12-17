@@ -36,8 +36,8 @@ public class LibDefImpl implements LibDefService {
 //        em.createQuery(hql2, Salle.class).setParameter("newStatus", true).setParameter("salleId", id2);
         int id = liberationDefinitive.getReservation().getId_res();
         String hql = "UPDATE Reservation r SET r.infos_res.status_res = :newStatus WHERE r.id = :reservationId";
-        return em.createQuery(hql,Reservation.class).setParameter("newStatus", false).setParameter("reservationId", id).getSingleResult();
-
+         em.createQuery(hql).setParameter("newStatus", false).setParameter("reservationId", id).executeUpdate();
+        return liberationDefinitive.getReservation();
     }
 
     @Override

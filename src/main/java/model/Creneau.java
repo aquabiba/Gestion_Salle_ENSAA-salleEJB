@@ -9,7 +9,6 @@ public class Creneau {
     private int id_creneau;
     private String desc_creneau;
     private boolean disponibilite_sal;
-
     @ManyToOne
     private Salle salle;
 

@@ -13,5 +13,5 @@ public interface CreneauService {
     public void deleteCreneau(Creneau creneau);
     public Creneau getCreneauById(int id);
     public List<Creneau> getCreneaux();
-    public List<Salle> getSallesByDisponibilite(String creneau);
+    public List<Salle> getSallesByDisponibilite(String creneau, String jour);
 }
