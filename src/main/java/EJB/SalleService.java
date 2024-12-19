@@ -1,6 +1,7 @@
 package EJB;
 
 import jakarta.ejb.Local;
+import model.Reservation;
 import model.Salle;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface SalleService {
     public Salle getSalleById(int idSalle);
     public Salle getSalleByName(String nom);
     public List<Salle> getAllSalles();
+    public Reservation getSalleByJourCrenFiliere(String jour, String cren , String filiere);
 }
